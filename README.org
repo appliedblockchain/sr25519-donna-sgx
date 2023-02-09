@@ -1,10 +1,16 @@
-#+title: sr25519-donna
+#+title: sr25519-donna-sgx
+
+SGX edition of TerenceGe's [[https://github.com/TerenceGe/sr25519-donna]][[sr25519-donna]] library.
+To compile an SGX compatible library use the cmake command
+#+BEGIN_SRC sh
+cmake .. -DSGX=true
+#+END_SRC
 
 This is a pure C implementation of polkadot's key derivation and signing algorithm [[https://wiki.polkadot.network/docs/en/learn-cryptography][schnorrkel]]. The goal is to fully compatible with the original [[https://github.com/w3f/schnorrkel][rust version]]. The curve operations are based on [[https://github.com/floodyberry/ed25519-donna][ed25519-donna]]. [[https://github.com/w3f/Grants-Program/blob/master/docs/accepted_grant_applications.md#surfing_woman-wave-6---second-quarter-2020][file:https://raw.githubusercontent.com/w3f/Open-Grants-Program/master/src/web3%20foundation%20grants_black.jpg]]
 * Compilation
 ** Default Options
 #+BEGIN_SRC sh
-git clone git@github.com:TerenceGe/sr25519-donna.git
+git clone git@github.com:apliedblockchain/sr25519-donna-sgx.git
 cd sr25519-donna
 mkdir build && cd build
 cmake .. -DCMAKE_INSTALL_PREFIX=. && make install # The options "-DCMAKE_INSTALL_PREFIX=." will install library in the build folder, you can change the location if you want.
