@@ -1,3 +1,18 @@
+#if defined(SGX)
+#include "memzero.h"
+#include "stdint.h"
+
+void memzero(void *const pnt, const size_t len)
+{
+    volatile uint8_t *p = (uint8_t *)pnt;
+    const uint8_t *end = (uint8_t *)pnt + len;
+
+    while (p < end)
+        *p++ = 0;
+}
+
+#else
+
 #ifndef __STDC_WANT_LIB_EXT1__
 #define __STDC_WANT_LIB_EXT1__ 1  // C11's bounds-checking interface.
 #endif
@@ -65,3 +80,5 @@ void memzero(void *const pnt, const size_t len) {
     }
 #endif
 }
+
+#endif

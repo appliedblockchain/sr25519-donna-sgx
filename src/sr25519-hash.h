@@ -1,7 +1,7 @@
 #ifndef __SR25519_HASH_H__
 #define __SR25519_HASH_H__
 
-#if defined(SR25519_CUSTOMHASH)
+#if (defined(SR25519_CUSTOMHASH)) && (!defined(SGX))
 
 #include "sr25519-hash-custom.h"
 

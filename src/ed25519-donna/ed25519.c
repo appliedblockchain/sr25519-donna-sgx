@@ -56,7 +56,7 @@ ED25519_FN(ed25519_publickey) (const ed25519_secret_key sk, ed25519_public_key p
 
 
 void
-ED25519_FN(ed25519_sign) (const unsigned char *m, size_t mlen, const ed25519_secret_key sk, const ed25519_public_key pk, ed25519_signature RS) {
+ED25519_FN(ed25519_sign_sr) (const unsigned char *m, size_t mlen, const ed25519_secret_key sk, const ed25519_public_key pk, ed25519_signature RS) {
 	ed25519_hash_context ctx;
 	bignum256modm r, S, a;
 	ge25519 ALIGN(16) R;

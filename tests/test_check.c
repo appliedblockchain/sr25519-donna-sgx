@@ -169,7 +169,7 @@ void hard_derives_pair() {
     }
 }
 
-void vrf_verify() {
+void test_vrf_verify() {
     printf("test vrf verify: ");
 
     sr25519_mini_secret_key seed = {0};
@@ -259,7 +259,7 @@ int main(int argc, char *argv[]) {
     soft_derives_pair();
     soft_derives_public();
     hard_derives_pair();
-    vrf_verify();
+    test_vrf_verify();
     vrf_result_not_less();
     vrf_sign_and_check();
 

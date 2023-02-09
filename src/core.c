@@ -9,7 +9,10 @@
 #endif
 
 #include "core.h"
+
+#if !defined(SGX)
 #include "sr25519-randombytes-default.h"
+#endif
 
 static volatile int initialized;
 static volatile int locked;

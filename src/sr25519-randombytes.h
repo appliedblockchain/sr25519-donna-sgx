@@ -1,7 +1,7 @@
 #ifndef __SR25519_RANDOM_H__
 #define __SR25519_RANDOM_H__
 
-#if defined(SR25519_CUSTOMRANDOM)
+#if (defined(SR25519_CUSTOMRANDOM)) || (defined(SGX))
 
 #include "sr25519-randombytes-custom.h"
 

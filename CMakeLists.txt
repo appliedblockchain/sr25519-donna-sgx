@@ -102,13 +102,15 @@ set(INCLUDE_FILES
   src/sr25519-randombytes.h
   src/sr25519-randombytes-custom.h
   src/sr25519-randombytes-default.h
-  )
+)
 
 if(SGX)
   include_directories(src src/ed25519-donna)
   add_trusted_library(sr25519_t SRCS ${SOURCE_FILES})
   install(TARGETS sr25519_t DESTINATION lib)
   install(FILES ${INCLUDE_FILES} DESTINATION include)
+  install(FILES src/sr25519-donna-sgx.h DESTINATION include RENAME sr25519-donna.h)
+  install(FILES src/sr25519-randombytes-sgx.h DESTINATION include RENAME sr25519-randombytes.h)
 else()
   add_library(sr25519_donna SHARED ${SOURCE_FILES})
   add_library(sr25519_donna_static STATIC ${SOURCE_FILES})
