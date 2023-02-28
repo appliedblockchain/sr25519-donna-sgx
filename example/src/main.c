@@ -230,6 +230,22 @@ void vrf_sign_and_check() {
     printf("result1 is less: %i\n", res1.is_less);
 }
 
+void create_public_key_from_private_key() {
+  printf("creates_public_key_from_private_key: \n");
+
+  sr25519_secret_key secret_key = {0};
+  memcpy(secret_key, fromhex("915bb406968655c3412df5773c3de3dee9f6da84668b5de8d2f34d0304d20b0bac5ea3a293dfd93859ee64a5b825937753864c19be857f045758dcae10259ba"), 32);
+  sr25519_public_key expected = {0};
+  memcpy(expected, fromhex("1049b21bb9cb88471b9dadb50b925135cfb291a463043635b58599a2d01b1fd18"), 32);
+  sr25519_public_key public_key = {0};
+  sr25519_public_key_from_private_key(public_key, secret_key);
+
+  printf("public_key: ");
+  print_hash(public_key, 32);
+  printf("expected: ");
+  print_hash(expected, 32);
+}
+
 int main(int argc, char *argv[]) {
     creates_pair_from_known_seed();
     printf("\n");

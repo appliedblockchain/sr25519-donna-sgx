@@ -38,6 +38,11 @@ typedef struct VrfResult {
     bool is_less;
 } VrfResult;
 
+/**
+ * public_key: the public key of the keypair to sign the message, 32 bytes long
+ * private_key: the secret key of the keypair to sign the message, 64 bytes long
+ */
+void sr25519_public_key_from_private_key(sr25519_public_key public_key, sr25519_secret_key private_key);
 
 /*
  * keypair: the output ed25519 compatible keypair, 96 bytes long

@@ -91,10 +91,11 @@ void sr25519_keypair_from_seed(sr25519_keypair keypair, const sr25519_mini_secre
 #+END_SRC
 [[https://github.com/TerenceGe/sr25519-donna/blob/954fc1ff50aa919a05b23e28695dc92cab510467/example/src/main.c#L27][example]]
 ** sign message
-| param                      | description                                                      |
-| signature                  | the signature ouput, 64 bytes long                               |
-| public_key                 | the public key of the keypair to sign the message, 32 bytes long |
-| message and message_length | message arrary and length                                        |
+| param                      | description                                                       |
+| signature                  | the signature ouput, 64 bytes long                                |
+| public_key                 | the public key of the keypair to sign the message, 32 bytes long  |
+| secret                     | the private key of the keypair to sign the message, 64 bytes long |
+| message and message_length | message arrary and length                                         |
 #+BEGIN_SRC C
 void sr25519_sign(sr25519_signature signature, const sr25519_public_key public_key, const sr25519_secret_key secret, const uint8_t *message, unsigned long message_length);
 #+END_SRC
@@ -197,6 +198,14 @@ void sr25519_uniform_keypair_from_seed(sr25519_keypair keypair, const sr25519_mi
 void sr25519_keypair_ed25519_to_uniform(sr25519_keypair uniform_keypair, const sr25519_keypair ed25519_keypair);
 #+END_SRC
 [[https://github.com/TerenceGe/sr25519-donna/blob/7dd704c0530e7aad50c7ec8e6069725f6124645a/example/src/main.c#L148][example]]
+** create public_key from private_key
+| param         | description                                                          |
+| public_key    | the corresponding public key that signing the message, 32 bytes long |
+| private_key   | the private key of the keypair to sign the message, 64 bytes long    |
+#+BEGIN_SRC C
+void sr25519_public_key_from_private_key(sr25519_public_key public_key, sr25519_secret_key private_key)
+#+END_SRC
+[[https://github.com/appliedblockchain/sr25519-donna-sgx/blob/master/example/src/main.c#L233][example]]
 * Author
 [[https://github.com/TerenceGe][Terence Ge]]
 * License
